@@ -40,6 +40,17 @@ void loopTree(struct Node* root) {
 
 };
 
+
+void deleteTree(struct Node* node) {
+    if (node) {
+        deleteTree(node->leftChild);
+        deleteTree(node->rightChild);
+
+        free(node);
+    }
+}
+
+
 int main() {
     printf("Hello world\n");
 
@@ -63,7 +74,7 @@ int main() {
 
     loopTree(root);
 
-    free(root);
+    deleteTree(root);
 
     return 0;
 };
